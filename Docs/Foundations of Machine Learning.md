@@ -1,7 +1,8 @@
+# Foundations of Machine Learning
 📌 Understand the basics of Machine Learning
 ##### Source: [NVIDIA Machine Learning](https://www.nvidia.com/en-us/glossary/machine-learning/)
 ### Machine Learning
-Machine learning (ML) is a two-model process where computer systems find patterns in massive amounts of data using algorithms and statistical models. Another model is used to recognise the patterns to make predictions or descriptions on new data. In simple terms, machine learning trains a machine to learn without it being programmed to do so.
+Machine learning (ML) is a two-phase process where computer systems find patterns in massive amounts of data and make predictions based on the patterns. For each phase, a model is used in the form of algorithms or statistical concepts. In simple terms, machine learning trains a machine to learn without it being programmed to do so.
 
 Machine learning uses algorithms to autonomously create models from data fed into a machine learning platform. Typical programmed systems rely on expertise knowledge in programmed rules, however, when data is changing, the rules are difficult to maintain. **ML provides the ability to learn from increasing volumes of data and provide data driven predictions.**
 
