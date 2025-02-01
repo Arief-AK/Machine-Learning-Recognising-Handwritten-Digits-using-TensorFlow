@@ -51,6 +51,28 @@ An example of regression is the following scenario.
 Linear regression can be used to predict the house price (label) based on the size of the house (feature).
 
 ### Un-supervised Learning
+Unsupervised learning or descriptive analysis does not have labeled data provided in advance.
+
+These algorithms attempts to learn the structure of the input data, discovering similarities and (i)-regularities.
+
+There are two flavours of un-supervised learning; **clustering** and **association**.
+
+#### Clustering
+Algorithms that analyse and categorise similarities between the input data. Clustering is commonly combined with unsupervised learning in order to get more valuable results.
+
+An example of clustering can be shown in the following scenario.
+
+**Example**: Business Customer Segmentation
+
+**Features**: Purchase data (not-known)
+1. Department (Health, Sport, .etc..)
+2. Store Location (Downtown, Industrial, .etc..)
+
+![Clustering](Resources/clustering.png)
+
+Customers can be grouped based on the features.
+
+#### Association
 TBA
 
 ### Benefits of Machine Learning
