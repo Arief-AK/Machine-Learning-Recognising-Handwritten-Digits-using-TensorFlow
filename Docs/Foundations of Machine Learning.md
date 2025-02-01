@@ -23,6 +23,8 @@ An example of classification is the following scenario.
 
 **Example**: Fraudelent Credit Card Transactions
 
+**Label**: Probability of Fraud
+
 **Features**:
 1. IBAN
 2. Transaction amount
@@ -30,10 +32,23 @@ An example of classification is the following scenario.
 
 ![Classification](Resources/classification.png)
 
-Logistic regression can be used to estimate the probabilty whether a transaction is fraudelent or not.
+Logistic regression can be used to estimate the probabilty whether a transaction is fraudelent (label) depending on the IBAN, amount, and location information (features).
 
 #### Regression
-TBA
+Regression estimates the relationship between a target outcome label and one or more feature variables to predict a continuous numeric value.
+
+An example of regression is the following scenario.
+
+**Example**: House Prices
+
+**Label**: Price of Houses
+
+**Features**:
+1. Size
+
+![Regression](Resources/regression.png)
+
+Linear regression can be used to predict the house price (label) based on the size of the house (feature).
 
 ### Un-supervised Learning
 TBA
