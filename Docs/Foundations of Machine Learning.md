@@ -84,15 +84,6 @@ The followig are some examples of un-supervised learning algorithms.
 4. [Alternating Least Squares (ALS)](https://sophwats.github.io/2018-04-05-gentle-als.html)
 5. [FP-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
 
-### Benefits of Machine Learning
-TBA
-
-### Machine Learning Use Cases
-TBA
-
 ### Why it matters?
-TBA
-
-### Benefits of using GPUs
-TBA
+Companies increasingly use ML to recongnise complex patterns in their respective business lines.
 
