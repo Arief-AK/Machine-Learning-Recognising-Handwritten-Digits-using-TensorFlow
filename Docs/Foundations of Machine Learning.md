@@ -10,6 +10,29 @@ The performance of an ML algorithm depends on the capability of algorithms turni
 
 Machine learning implements two techniques that divide the use of algorithms into different types: **supervised** and **un-supervised** learning.
 ### Supervised Learning
+Supervised learning is an analysis where an algorithms are used to train models to find patterns in data with **labels and features**. It uses the trained model to predict the labels on new datasets.
+
+![Supervised Learning](Resources/supervised_learning.png)
+
+There are two flavours of supervised learning; **classification** and **regression**.
+
+#### Classification
+Classification identifies the category that an item belongs to based on labeled examlples of known items.
+
+An example of classification is the following scenario.
+
+**Example**: Fraudelent Credit Card Transactions
+
+**Features**:
+1. IBAN
+2. Transaction amount
+3. Location
+
+![Classification](Resources/classification.png)
+
+Logistic regression can be used to estimate the probabilty whether a transaction is fraudelent or not.
+
+#### Regression
 TBA
 
 ### Un-supervised Learning
