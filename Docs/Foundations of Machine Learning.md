@@ -73,7 +73,16 @@ An example of clustering can be shown in the following scenario.
 Customers can be grouped based on the features.
 
 #### Association
-TBA
+Association or frequent pattern mining find relationships or dependencies in large sets of data items.
+
+The followig are some examples of un-supervised learning algorithms.
+
+**Un-supervised Learning Algorithms**:
+1. [K-means](https://en.wikipedia.org/wiki/K-means_clustering)
+2. [Latent Dirichlet Allocation (LDA)](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation)
+3. [Gaussian Mixture Model (GMM)](https://www.mathworks.com/help/stats/clustering-using-gaussian-mixture-models.html)
+4. [Alternating Least Squares (ALS)](https://sophwats.github.io/2018-04-05-gentle-als.html)
+5. [FP-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
 
 ### Benefits of Machine Learning
 TBA
