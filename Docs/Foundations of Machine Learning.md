@@ -85,5 +85,5 @@ The followig are some examples of un-supervised learning algorithms.
 5. [FP-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
 
 ### Why it matters?
-Companies increasingly use ML to recongnise complex patterns in their respective business lines.
+Companies increasingly use ML to recongnise complex patterns in their respective business lines. Lare companies from retail, finance, healthcare, and logistics leverage data science technologies to improve their competitiveness.
 
