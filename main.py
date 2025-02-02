@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from tensorflow import keras
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
 
 IMAGE_DIRECTORY = 'images/'
 
@@ -47,3 +48,14 @@ if __name__ == "__main__":
 
     # Display some sample images
     display_sample_images(x_train)
+
+    # Train a logistic regression model
+    model = LogisticRegression(max_iter=1000, solver='saga', multi_class='multinomial')
+    model.fit(x_train, y_train)
+
+    # Predict on the test data
+    y_pred = model.predict(x_test)
+
+    # Evaluate the model
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f"Logistic Regression Accuracy: {accuracy * 100:.2f}%")
