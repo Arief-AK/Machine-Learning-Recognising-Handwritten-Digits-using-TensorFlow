@@ -50,14 +50,29 @@ class TensorModel:
 
     def tensor_create_cnn_model(self) -> tf.keras.Model:
         model = Sequential([
-            Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
-            MaxPooling2D((2, 2)),
-            Conv2D(64, (3, 3), activation='relu'),
-            MaxPooling2D((2, 2)),
-            Flatten(),
-            Dense(128, activation='relu'),
-            Dense(10, activation='softmax')
+            Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),     # Creates 32 kernels of size 3x3, relu activation used to remove negative values, detects basic patterns
+            MaxPooling2D((2, 2)),                                               # Selects maximum value in 2x2 region, reduces size of feature
+            Conv2D(64, (3, 3), activation='relu'),                              # Creates 64 kernels of size 3x3, detects complex patterns (corners, shapes)
+            MaxPooling2D((2, 2)),                                               # Selects maximum values in 2x2 regions
+            Flatten(),                                                          # Flattens 2D feature maps into 1D vector, enables utilising Dense layers
+            Dense(128, activation='relu'),                                      # Learn abstract representations, 128 neurons
+            Dense(10, activation='softmax')                                     # Dataset has 10 digit classes (0-9), uses softmax to convert output to probabilities
         ])
+
+        # Model Compilation
+        # Optimizer: Updates model weights to minimise loss
+        # adam: Adaptive Moment Estimation
+        #       Adaptive learning rate:     Adjust each parameter, preventing slow learning
+        #       Fast convergence:           Reaches good accuracy quickly
+        #
+        # Loss: Measures how wrong the predictions are, tells optmizer how to adjust weights
+        # sparse_categorial_crossentropy
+        #       Multi-class classification: MNIST has 10 classes (0-9)
+        #
+        # Metrics:
+        # accuracy
+        #       Measures how many predictions were correct
+        #       Provides percentage of correct classification
         model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
         return model
 
