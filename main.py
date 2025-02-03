@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from include.TensorModel import TensorModel
+from include.TensorModel import tf
 
 IMAGE_DIRECTORY = 'images/'
 NUM_DISPLAYED_SAMPLES = 7
@@ -31,13 +32,11 @@ if __name__ == "__main__":
     str_model: str = ""
     test_acc: float = 0.0
     y_pred: np.ndarray = None
+    model: tf.keras.Model
     if choice == 1:
         # Get logistic regression model using TensorFlow
         str_model = "Logistic Regression"
         logistic_reg_model = model_handler.tensor_create_logistic_regression_model()
-        logistic_reg_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
-        test_loss, test_acc = logistic_reg_model.evaluate(x_test, y_test)
-        y_pred = model_handler.tensor_predict(logistic_reg_model, x_test, NUM_DISPLAYED_SAMPLES)
     elif choice == 2:
         # Get CNN model using TensorFlow
         str_model = "CNN"
@@ -47,6 +46,9 @@ if __name__ == "__main__":
         y_pred = model_handler.tensor_predict(cnn_model, x_test, NUM_DISPLAYED_SAMPLES)
     else:
         pass
+    logistic_reg_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
+    test_loss, test_acc = logistic_reg_model.evaluate(x_test, y_test)
+    y_pred = model_handler.tensor_predict(logistic_reg_model, x_test, NUM_DISPLAYED_SAMPLES)
     print(f"{str_model} Model Accuracy: {test_acc * 100:.2f}%")
 
     # Display results

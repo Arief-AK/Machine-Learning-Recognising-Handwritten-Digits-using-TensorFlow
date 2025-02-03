@@ -13,15 +13,21 @@ class TensorModel:
         print("Num GPUs Available:", len(tf.config.list_physical_devices('GPU')))
 
     def _preprocess_data_linear_reg(self, x_train: np.ndarray, x_test: np.ndarray) -> tuple:
+        # Normalise pixel values
         x_train = x_train / 255.0
         x_test = x_test / 255.0
+
+        # Flatten the data from a 2D (28x28) to 1D (728) array
         x_train_flat = x_train.reshape(x_train.shape[0], -1)
         x_test_flat = x_test.reshape(x_test.shape[0], -1)
         return x_train_flat, x_test_flat
 
     def _preprocess_data_cnn(self, x_train: np.ndarray, x_test: np.ndarray) -> tuple:
+        # Normalise pixel values
         x_train = x_train / 255.0
         x_test = x_test / 255.0
+
+        # Flatten the data to single channel
         x_train = x_train.reshape(-1, 28, 28, 1)
         x_test = x_test.reshape(-1, 28, 28, 1)
         return x_train, x_test
