@@ -1,8 +1,4 @@
-import numpy as np
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from headers import *
 
 class TensorModel:
     def __init__(self, image_directory='images/', num_displayed_samples=7):
