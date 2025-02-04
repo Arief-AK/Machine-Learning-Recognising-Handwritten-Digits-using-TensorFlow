@@ -1,6 +1,5 @@
 from headers import *
 
-import matplotlib.pyplot as plt
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing import image
 

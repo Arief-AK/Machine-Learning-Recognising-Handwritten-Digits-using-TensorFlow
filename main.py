@@ -1,8 +1,6 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
+from include.headers import *
 from include.TensorModel import TensorModel
-from include.TensorModel import tf
+from include.Visualiser import Visualiser
 
 IMAGE_DIRECTORY = 'images/'
 NUM_DISPLAYED_SAMPLES = 7
@@ -36,19 +34,16 @@ if __name__ == "__main__":
     if choice == 1:
         # Get logistic regression model using TensorFlow
         str_model = "Logistic Regression"
-        logistic_reg_model = model_handler.tensor_create_logistic_regression_model()
+        model = model_handler.tensor_create_logistic_regression_model()
     elif choice == 2:
         # Get CNN model using TensorFlow
         str_model = "CNN"
-        cnn_model = model_handler.tensor_create_cnn_model()
-        cnn_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
-        test_loss, test_acc = cnn_model.evaluate(x_test, y_test)
-        y_pred = model_handler.tensor_predict(cnn_model, x_test, NUM_DISPLAYED_SAMPLES)
+        model = model_handler.tensor_create_cnn_model()
     else:
         pass
-    logistic_reg_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
-    test_loss, test_acc = logistic_reg_model.evaluate(x_test, y_test)
-    y_pred = model_handler.tensor_predict(logistic_reg_model, x_test, NUM_DISPLAYED_SAMPLES)
+    model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
+    test_loss, test_acc = model.evaluate(x_test, y_test)
+    y_pred = model_handler.tensor_predict(model, x_test, NUM_DISPLAYED_SAMPLES)
     print(f"{str_model} Model Accuracy: {test_acc * 100:.2f}%")
 
     # Display results
