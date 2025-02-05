@@ -65,26 +65,6 @@ def display_results(choice: int, logger: Logger, x_test , y_pred: np.ndarray):
     plt.savefig(f"{IMAGE_DIRECTORY}{str_model}_sample_images.png")
     logger.info(f"Saved {str_model} result images in {IMAGE_DIRECTORY}{str_model}")
 
-# Visualising filters
-def visualising_grayscale_filters(model: tf.keras.models.Model, str_model: str , layer_name: str):
-    conv_layer = model.get_layer(layer_name)
-    filters, _ = conv_layer.get_weights()
-
-    num_filters = filters.shape[-1]  # Number of filters
-    fig, axes = plt.subplots(1, min(6, num_filters), figsize=(15, 5))
-
-    for i in range(min(6, num_filters)):  # Show up to 6 filters
-        f = filters[:, :, 0, i]  # Extract one filter (grayscale case)
-        f = (f - f.min()) / (f.max() - f.min())  # Normalize to [0,1]
-        
-        axes[i].imshow(f, cmap='gray')
-        axes[i].axis("off")
-        axes[i].set_title(f"Filter {i}")
-
-    # Save figure to image directory
-    plt.savefig(f"{IMAGE_DIRECTORY}{str_model}/{str_model}_{layer_name}_filter.png")
-    logger.info(f"Saved {str_model} filter results in {IMAGE_DIRECTORY}{str_model}")
-
 if __name__ == "__main__":
     # Choose the model to use
     if USE_CNN:
@@ -118,11 +98,10 @@ if __name__ == "__main__":
     visualiser = Visualiser()
     sample_image = visualiser.load_data_sample()
 
-    #layer_names = ['conv2d', 'max_pooling2d', 'flatten', 'dense', 'dense_1']
     layer_names = ['conv2d', 'max_pooling2d', 'conv2d_1', 'max_pooling2d_1', 'flatten', 'dense', 'dense_1']
     visualiser.visualise_feature_maps(model, str_model, layer_names, sample_image)
 
-    visualising_grayscale_filters(model, str_model, layer_names[0])
-    visualising_grayscale_filters(model, str_model, layer_names[2])
+    visualiser.visualise_grayscale_filters(model, str_model, layer_names[0])
+    visualiser.visualise_grayscale_filters(model, str_model, layer_names[2])
     
     print("Done!")
