@@ -6,6 +6,8 @@ IMAGE_DIRECTORY = 'images/'
 NUM_DISPLAYED_SAMPLES = 7
 NUM_EPOCHS = 10
 
+USE_CNN = True
+
 # Display some sample images
 def display_sample_images(x_train: np.ndarray):
     fig, axes = plt.subplots(1, NUM_DISPLAYED_SAMPLES, figsize=(20, 3))
@@ -65,7 +67,10 @@ def display_results(choice: int, logger: Logger, x_test , y_pred: np.ndarray):
 
 if __name__ == "__main__":
     # Choose the model to use
-    choice = int(input("Enter 1 for Logistic Regression, 2 for CNN: "))
+    if USE_CNN:
+        choice = 2
+    else:
+        choice = int(input("Enter 1 for Logistic Regression, 2 for CNN: "))
 
     # Initialise handlers
     model_handler = TensorModel(IMAGE_DIRECTORY, NUM_DISPLAYED_SAMPLES)
