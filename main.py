@@ -98,6 +98,7 @@ if __name__ == "__main__":
     visualiser = Visualiser()
     sample_image = visualiser.load_data_sample()
 
+    #layer_names = ['conv2d', 'max_pooling2d', 'flatten', 'dense', 'dense_1']
     layer_names = ['conv2d', 'max_pooling2d', 'conv2d_1', 'max_pooling2d_1', 'flatten', 'dense', 'dense_1']
     visualiser.visualise_feature_maps(model, str_model, layer_names, sample_image)
     
