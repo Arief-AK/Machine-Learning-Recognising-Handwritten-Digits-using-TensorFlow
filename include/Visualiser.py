@@ -1,4 +1,5 @@
-from headers import *
+import os
+from include.headers import *
 
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing import image
@@ -6,6 +7,7 @@ from tensorflow.keras.preprocessing import image
 class Visualiser:
     def __init__(self, image_directory='images/'):
         self.IMAGE_DIRECTORY = image_directory
+        self.logger = Logger("Visualiser")
 
     # Function to pre-process data
     def _preprocess_data(self, sample):
@@ -31,11 +33,22 @@ class Visualiser:
     def visualise_feature_maps(self, model: Model, str_model: str, layer_names: list, image_input) -> None:
         # Get the layers from the model
         layer_outputs = [model.get_layer(name).output for name in layer_names]
-        feature_model = Model(inputs=model.input, outputs=layer_outputs)
-
+        feature_model = Model(inputs=model.inputs, outputs=layer_outputs)
+        
+        # Initialise feature map
         feature_maps = feature_model.predict(image_input)
 
+        # Create result directory
+        result_directory = f"{self.IMAGE_DIRECTORY}{str_model}"
+        os.makedirs(result_directory, exist_ok=True)
+
         for layer_name, feature_map in zip(layer_names, feature_maps):
+            self.logger.debug(f"Layer: {layer_name} | Feature Map Shape: {feature_map.shape}")
+
+            if(len(feature_map.shape) != 4):
+                self.logger.debug(f"Skipping {layer_name}: Not an image representation")
+                continue
+
             num_filters = feature_map.shape[-1]
             size = feature_map.shape[1]
 
@@ -47,4 +60,4 @@ class Visualiser:
                 plt.imshow(feature_map[0, :, :, i], cmap='viridis')
                 plt.axis('off')
             
-            plt.savefig(f"{self.IMAGE_DIRECTORY}{str_model}_{layer_name}_feature_map.png")
+            plt.savefig(f"{result_directory}/{str_model}_{layer_name}_feature_map.png")

@@ -1,12 +1,13 @@
-from headers import *
+from include.headers import *
 
 class TensorModel:
     def __init__(self, image_directory='images/', num_displayed_samples=7):
         self.IMAGE_DIRECTORY = image_directory
         self.NUM_DISPLAYED_SAMPLES = num_displayed_samples
+        self.logger = Logger("TensorModel")
 
         # Ensure GPU is available
-        print("Num GPUs Available:", len(tf.config.list_physical_devices('GPU')))
+        self.logger.info(f"Number of GPUs: {len(tf.config.list_physical_devices('GPU'))}")
 
     def _preprocess_data_linear_reg(self, x_train: np.ndarray, x_test: np.ndarray) -> tuple:
         # Normalise pixel values
