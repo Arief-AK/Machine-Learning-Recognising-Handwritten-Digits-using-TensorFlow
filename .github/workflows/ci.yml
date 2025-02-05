@@ -22,6 +22,9 @@ jobs:
         - name: Setup CML (Continuous Machine Learning)
           uses: iterative/setup-cml@v2.0.1
 
+        - name: Cache Dependencies
+          uses: actions/cache@v4
+
         - name: Install dependencies
           run: |
             python -m pip install --upgrade pip
