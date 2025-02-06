@@ -61,3 +61,25 @@ class Visualiser:
                 plt.axis('off')
             
             plt.savefig(f"{result_directory}/{str_model}_{layer_name}_feature_map.png")
+
+    # Function to visualise filters
+    def visualise_grayscale_filters(self, model: Model, str_model: str , layer_name: str):
+        conv_layer = model.get_layer(layer_name)
+        filters, _ = conv_layer.get_weights()
+
+        num_filters = filters.shape[-1]  # Number of filters
+        fig, axes = plt.subplots(1, min(6, num_filters), figsize=(15, 5))
+
+        # Create result directory
+        result_directory = f"{self.IMAGE_DIRECTORY}{str_model}"
+        os.makedirs(result_directory, exist_ok=True)
+
+        for i in range(min(6, num_filters)):  # Show up to 6 filters
+            f = filters[:, :, 0, i]  # Extract one filter (grayscale case)
+            f = (f - f.min()) / (f.max() - f.min())  # Normalize to [0,1]
+            
+            axes[i].imshow(f, cmap='gray')
+            axes[i].axis("off")
+            axes[i].set_title(f"Filter {i}")
+
+        plt.savefig(f"{result_directory}/{str_model}_{layer_name}_filter.png")

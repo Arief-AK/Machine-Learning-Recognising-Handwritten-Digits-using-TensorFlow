@@ -63,7 +63,7 @@ def display_results(choice: int, logger: Logger, x_test , y_pred: np.ndarray):
     
     # Save figure to image directory
     plt.savefig(f"{IMAGE_DIRECTORY}{str_model}_sample_images.png")
-    logger.info(f"Saved {str_model} results in {IMAGE_DIRECTORY}{str_model}")
+    logger.info(f"Saved {str_model} result images in {IMAGE_DIRECTORY}{str_model}")
 
 if __name__ == "__main__":
     # Choose the model to use
@@ -100,5 +100,8 @@ if __name__ == "__main__":
 
     layer_names = ['conv2d', 'max_pooling2d', 'conv2d_1', 'max_pooling2d_1', 'flatten', 'dense', 'dense_1']
     visualiser.visualise_feature_maps(model, str_model, layer_names, sample_image)
+
+    visualiser.visualise_grayscale_filters(model, str_model, layer_names[0])
+    visualiser.visualise_grayscale_filters(model, str_model, layer_names[2])
     
     print("Done!")
